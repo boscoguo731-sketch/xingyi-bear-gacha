@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171d1a">
+  <meta name="description" content="BOSCO 的电子名片：原创表情、手绘风格视频、微信小程序。把灵感做成看得见、用得上的作品。">
+  <title>BOSCO · 个人电子名片</title>
+  <style>
+    :root{--ink:#171d1a;--cream:#f3f0e7;--lime:#d8ec9d;--line:rgba(255,255,255,.17);--muted:#abb5aa}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ink);color:var(--cream);font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+    button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 40px),520px);margin:auto}
+    .top{height:75px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-size:15px;font-weight:900;letter-spacing:.16em}.topnote{font-size:11px;color:var(--muted);letter-spacing:.12em}
+    .intro{padding:55px 0 28px}.eyebrow{display:flex;gap:10px;align-items:center;color:var(--lime);font-size:12px;font-weight:700;letter-spacing:.2em}.eyebrow:before{content:"";width:19px;height:1px;background:var(--lime)}
+    h1{margin:24px 0 0;font-size:clamp(74px,19vw,112px);line-height:.82;letter-spacing:-.09em;font-weight:900}h1 span{display:block}.name-cn{font-size:17px;font-weight:700;letter-spacing:.25em;margin:26px 0 0}.tagline{font-size:28px;line-height:1.35;letter-spacing:-.05em;margin:29px 0 14px;font-weight:700}.tagline em{font-style:normal;color:var(--lime)}.lead{font-size:14px;line-height:1.9;color:#b9c1b8;max-width:390px;margin:0}
+    .portrait{position:relative;height:335px;margin:30px 0 0;border-radius:10px;overflow:hidden;background:#dbe8a8;color:var(--ink);display:grid;place-items:center}.portrait:before{content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(23,29,26,.25);border-radius:50%}.portrait:after{content:"";position:absolute;width:390px;height:390px;border:1px solid rgba(23,29,26,.17);border-radius:50%}.portrait svg{position:relative;z-index:1;width:245px;filter:drop-shadow(0 15px 0 rgba(25,38,25,.09))}.portrait .label{position:absolute;z-index:2;left:17px;top:17px;background:var(--ink);color:var(--cream);padding:8px 11px;border-radius:5px;font-size:10px;font-weight:700;letter-spacing:.15em}.portrait .num{position:absolute;z-index:2;right:18px;bottom:15px;font-size:12px;font-weight:900;letter-spacing:.1em}
+    .statement{padding:19px 0 29px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}.statement b{font-size:13px;line-height:1.6}.statement span{color:var(--muted);font-size:11px;letter-spacing:.1em;white-space:nowrap}
+    .section{padding:47px 0 0}.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px}.kicker{font-size:11px;color:var(--lime);letter-spacing:.2em;font-weight:800}.section h2{font-size:30px;line-height:1.2;letter-spacing:-.05em;margin:10px 0 26px}.section-head small{font-size:11px;color:var(--muted)}
+    .service{display:grid;grid-template-columns:42px 1fr auto;gap:9px;align-items:start;padding:21px 0;border-top:1px solid var(--line)}.service:last-child{border-bottom:1px solid var(--line)}.service .index{color:var(--lime);font-size:11px;font-weight:800;padding-top:5px}.service h3{font-size:17px;margin:0 0 8px}.service p{font-size:12px;color:var(--muted);line-height:1.75;margin:0}.service .arrow{font-size:19px;color:var(--lime);line-height:1}
+    .work{display:block;background:#283329;border:1px solid #3a4a36;border-radius:9px;padding:22px;margin-top:7px;transition:transform .2s,background .2s}.work:hover{transform:translateY(-2px);background:#314030}.work .mini{font-size:11px;color:var(--lime);letter-spacing:.15em}.work strong{display:block;font-size:20px;margin:11px 0 9px}.work p{margin:0;color:#bfc9bd;font-size:12px;line-height:1.7}.work .work-foot{display:flex;align-items:center;justify-content:space-between;margin-top:24px;font-size:11px;color:#e9f4d6}
+    .contact{margin:50px 0 30px;padding:26px 23px 24px;background:var(--cream);color:var(--ink);border-radius:9px}.contact .kicker{color:#5b7044}.contact h2{font-size:29px;margin:12px 0 10px;line-height:1.15;letter-spacing:-.04em}.contact p{margin:0;color:#59635b;font-size:12px;line-height:1.75}.actions{display:flex;gap:9px;margin-top:23px}.btn{border:0;border-radius:5px;min-height:45px;padding:0 16px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.btn.primary{background:var(--ink);color:var(--cream);flex:1}.btn.secondary{background:#dfe4d4;color:var(--ink)}.btn:focus-visible,a:focus-visible{outline:3px solid #94ae4f;outline-offset:3px}
+    footer{display:flex;justify-content:space-between;color:#819082;font-size:10px;letter-spacing:.12em;padding-bottom:26px}.toast{position:fixed;z-index:5;left:50%;bottom:26px;transform:translate(-50%,15px);background:#e8f5ca;color:#172016;padding:11px 15px;border-radius:6px;white-space:nowrap;font-size:12px;opacity:0;pointer-events:none;transition:.2s}.toast.show{transform:translate(-50%,0);opacity:1}
+    @media(max-width:380px){.wrap{width:min(calc(100% - 30px),520px)}.intro{padding-top:45px}.portrait{height:285px}.portrait svg{width:210px}.tagline{font-size:25px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top"><div class="brand">BOSCO<span aria-hidden="true" style="color:#d8ec9d">.</span></div><div class="topnote">PERSONAL CARD / 2026</div></header>
+    <main>
+      <section class="intro" aria-labelledby="name">
+        <div class="eyebrow">你好，我是</div>
+        <h1 id="name"><span>BOS</span><span>CO<span style="color:#d8ec9d">.</span></span></h1>
+        <p class="name-cn">创意 × 内容 × 数字产品</p>
+        <p class="tagline">把灵感，做成<br><em>真正能用的作品。</em></p>
+        <p class="lead">我正在探索 AI 与原创表达的结合：从一套有表情的角色，到一支有节奏的视频，再到一个能在微信里使用的小程序。</p>
+        <div class="portrait" role="img" aria-label="星懿熊主题的原创风格小熊插画">
+          <div class="label">IDEAS INTO REALITY</div>
+          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="150" cy="270" rx="102" ry="15" fill="#b4ca7f"/>
+            <path d="M80 102c-10-37 10-58 34-45 10 5 17 16 21 29M220 102c10-37-10-58-34-45-10 5-17 16-21 29" fill="#302e29" stroke="#302e29" stroke-width="10" stroke-linejoin="round"/>
+            <path d="M84 111c-6-49 37-74 66-74s72 25 66 74c35 18 56 48 53 84-4 54-51 82-119 82S35 249 31 195c-3-36 18-66 53-84Z" fill="#32302b"/>
+            <path d="M93 91c6-21 27-33 57-33s51 12 57 33" fill="none" stroke="#514c3e" stroke-width="11" stroke-linecap="round"/>
+            <ellipse cx="150" cy="173" rx="90" ry="70" fill="#f4ead5"/>
+            <ellipse cx="105" cy="171" rx="17" ry="21" fill="#242826"/><ellipse cx="195" cy="171" rx="17" ry="21" fill="#242826"/>
+            <circle cx="110" cy="164" r="5" fill="white"/><circle cx="200" cy="164" r="5" fill="white"/>
+            <ellipse cx="79" cy="201" rx="14" ry="8" fill="#e4a4a0" opacity=".65"/><ellipse cx="221" cy="201" rx="14" ry="8" fill="#e4a4a0" opacity=".65"/>
+            <path d="M134 198q16-13 32 0q-3 14-16 14t-16-14Z" fill="#272724"/><path d="M151 211q-2 14-14 16m14-16q2 14 14 16" fill="none" stroke="#272724" stroke-width="4" stroke-linecap="round"/>
+            <path d="M95 244q55 36 110 0l21 38H74Z" fill="#f4ead5"/><path d="M150 246v37" stroke="#d8ec9d" stroke-width="10"/>
+            <path d="M54 223q-32-11-34 10-3 20 27 18m199-28q32-11 34 10 3 20-27 18" fill="#32302b" stroke="#32302b" stroke-width="8" stroke-linecap="round"/>
+            <path d="M59 123q91-48 182 0" fill="none" stroke="#d8ec9d" stroke-width="9" stroke-linecap="round"/>
+          </svg>
+          <div class="num">星懿熊 · ORIGINAL PROJECT</div>
+        </div>
+        <div class="statement"><b>一个人，也可以把创意<br>认真做成一件件作品。</b><span>01 / ABOUT ME</span></div>
+      </section>
+      <section class="section" aria-labelledby="services">
+        <div class="section-head"><div><div class="kicker">WHAT I CREATE</div><h2 id="services">我在做什么</h2></div><small>03 个方向</small></div>
+        <div class="service"><span class="index">01</span><div><h3>专属微信表情</h3><p>以你的人物、宠物或原创角色为灵感，做一套日常聊天真正想用的表情。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+        <div class="service"><span class="index">02</span><div><h3>原创手绘风格视频</h3><p>把观点与故事变成有画面、有节奏的短视频；可用于个人内容和品牌表达。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+        <div class="service"><span class="index">03</span><div><h3>微信小程序</h3><p>从想法梳理、页面设计到功能实现，制作轻量、实用的微信内体验。</p></div><span class="arrow" aria-hidden="true">↗</span></div>
+      </section>
+      <section class="section" aria-labelledby="projects">
+        <div class="kicker">SELECTED PROJECT</div><h2 id="projects">做过的一个小作品</h2>
+        <a class="work" href="https://boscoguo731-sketch.github.io/xingyi-bear-gacha/" target="_blank" rel="noopener noreferrer" aria-label="打开星懿熊抽卡小游戏">
+          <span class="mini">INTERACTIVE / 星懿熊</span><strong>星懿熊抽卡小游戏</strong><p>一个将原创角色和轻互动结合的网页作品。点击看看它是怎样运作的。</p><div class="work-foot"><span>打开作品</span><span aria-hidden="true">↗</span></div>
+        </a>
+      </section>
+      <section class="contact" aria-labelledby="connect"><div class="kicker">LET'S CONNECT</div><h2 id="connect">有个想法？<br>我们聊聊。</h2><p>这是 BOSCO 的公开电子名片。联系方式尚待本人确认；你可以先把这张名片分享给需要的人。</p><div class="actions"><button class="btn primary" id="share" type="button">分享这张名片 ↗</button><a class="btn secondary" href="https://github.com/boscoguo731-sketch" target="_blank" rel="noopener noreferrer">GitHub</a></div></section>
+    </main>
+    <footer><span>© BOSCO · KEEP CREATING</span><span>SCAN · MEET · CREATE</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const share=document.getElementById('share'),toast=document.getElementById('toast');
+    function show(message){toast.textContent=message;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2600)}
+    share.addEventListener('click',async()=>{const data={title:'BOSCO · 个人电子名片',text:'把灵感做成真正能用的作品',url:location.href};try{if(navigator.share){await navigator.share(data)}else if(navigator.clipboard){await navigator.clipboard.writeText(location.href);show('名片链接已复制')}else{show('请使用浏览器菜单分享这张名片')}}catch(error){if(error.name!=='AbortError')show('请使用浏览器菜单分享这张名片')}});
+  </script>
+</body>
+</html>
